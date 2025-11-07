@@ -1,0 +1,242 @@
+/* Overlay de navegación */
+.navigation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(53, 153, 235, 0.95), rgba(42, 123, 200, 0.95));
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.navigation-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.navigation-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #FFFFFF;
+    border-radius: 50%;
+    animation: navigationSpin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes navigationSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.navigation-overlay p {
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Transiciones para el contenido principal */
+main, .content-page, .dashboard-main {
+    transition: opacity 0.6s ease, transform 0.6s ease !important;
+}
+
+/* Efectos de entrada para diferentes elementos */
+.student-card, .teacher-card, .memory-card, .panel {
+    animation: cardEntrance 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.student-card:nth-child(1) { animation-delay: 0.1s; }
+.student-card:nth-child(2) { animation-delay: 0.2s; }
+.student-card:nth-child(3) { animation-delay: 0.3s; }
+.student-card:nth-child(4) { animation-delay: 0.4s; }
+.student-card:nth-child(5) { animation-delay: 0.5s; }
+
+.teacher-card:nth-child(1) { animation-delay: 0.1s; }
+.teacher-card:nth-child(2) { animation-delay: 0.2s; }
+.teacher-card:nth-child(3) { animation-delay: 0.3s; }
+.teacher-card:nth-child(4) { animation-delay: 0.4s; }
+
+.memory-card:nth-child(1) { animation-delay: 0.1s; }
+.memory-card:nth-child(2) { animation-delay: 0.2s; }
+.memory-card:nth-child(3) { animation-delay: 0.3s; }
+.memory-card:nth-child(4) { animation-delay: 0.4s; }
+
+.panel:nth-child(1) { animation-delay: 0.1s; }
+.panel:nth-child(2) { animation-delay: 0.2s; }
+.panel:nth-child(3) { animation-delay: 0.3s; }
+.panel:nth-child(4) { animation-delay: 0.4s; }
+.panel:nth-child(5) { animation-delay: 0.5s; }
+.panel:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Mejoras para las tarjetas interactivas */
+.student-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    cursor: pointer !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.student-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.student-card:hover::before {
+    left: 100%;
+}
+
+.student-card:hover {
+    background: #2a7bc8 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-8px) scale(1.03) !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25) !important;
+}
+
+.teacher-card {
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.teacher-card:hover {
+    transform: translateY(-10px) scale(1.04) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.memory-card {
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.memory-card:hover {
+    transform: translateY(-10px) scale(1.04) !important;
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Paneles del dashboard */
+.panel {
+    cursor: pointer !important;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.panel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 153, 0, 0.3), rgba(0, 153, 0, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.panel:hover::after {
+    opacity: 1;
+}
+
+.panel:hover {
+    transform: translateY(-15px) scale(1.06) !important;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Efecto de pulso para elementos interactivos */
+.student-card:active,
+.teacher-card:active,
+.memory-card:active,
+.panel:active {
+    transform: scale(0.98) !important;
+    transition: transform 0.1s ease !important;
+}
+
+/* Indicador visual de que es clickeable */
+.student-card::after,
+.teacher-card::after,
+.memory-card::after,
+.panel::after {
+    content: '👆';
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+    font-size: 0.9rem;
+    transform: scale(0.8);
+}
+
+.student-card:hover::after,
+.teacher-card:hover::after,
+.memory-card:hover::after,
+.panel:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navigation-overlay p {
+        font-size: 1.1rem;
+    }
+    
+    .navigation-spinner {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .student-card:hover,
+    .teacher-card:hover,
+    .memory-card:hover,
+    .panel:hover {
+        transform: translateY(-5px) scale(1.02) !important;
+    }
+    
+    /* Reducir delays en móviles para mejor performance */
+    .student-card,
+    .teacher-card,
+    .memory-card,
+    .panel {
+        animation-delay: 0s !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .navigation-overlay p {
+        font-size: 1rem;
+        text-align: center;
+        padding: 0 1rem;
+    }
+    
+    .student-card:hover,
+    .teacher-card:hover,
+    .memory-card:hover,
+    .panel:hover {
+        transform: none !important;
+    }
+}
+
