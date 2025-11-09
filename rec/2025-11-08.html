@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Recordatorio de Campeonato</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/menu.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <h1>Promoción 2000</h1>
+            </div>
+            <div class="user-actions">
+                <span class="user-info">Bienvenidos compañeros</span>
+                <a href="../index.html"><button class="btn-logout">Ir a inicio</button></a>         
+            </div>
+        </div>
+    </header>
+        
+    <!-- Contenido principal -->
+    <main class="dashboard-main">
+        <h1>Juegos deportivos de Ex alumnos 2025</h1>
+        <p>💬 “Los campeonatos terminan, pero los recuerdos quedan para siempre.”</p>
+        <div class="dashboard-content">
+            <!-- Carrusel de imágenes -->
+            <div class="dashboard-image-slider" style="height: 600px;">
+                <div class="slider-container">
+                    <div class="slide active">
+                        <img src="2025-11/01.jpg" alt="Promoción 1">
+                    </div>
+                    <div class="slide">
+                        <img src="2025-11/02.jpg" alt="Promoción 2">
+                    </div>
+                    <div class="slide">
+                        <img src="2025-11/03.jpg" alt="Promoción 3">
+                    </div>
+                    <div class="slide">
+                        <img src="2025-11/04.jpg" alt="Promoción 4">
+                    </div>
+                    <div class="slide">
+                        <img src="2025-11/05.jpg" alt="Promoción 5">
+                    </div>
+                </div>
+                <button class="slider-btn prev-btn">‹</button>
+                <button class="slider-btn next-btn">›</button>
+                <div class="slider-dots"></div>
+            </div>
+            <a href="../recuerdos.html"><button class="btn-primary">Ingresar a recuerdos</button></a>
+        </div>
+        <p>Un día lleno de emoción, esfuerzo y amistad.
+        Cada jugada, cada risa y cada momento compartido quedarán grabados en nuestra memoria.
+        Más allá de los resultados, lo importante fue la unión, el trabajo en equipo y la alegría de vivir esta experiencia juntos.
+        </p>
+    </main>
+    
+    <!-- Footer cargado dinámicamente -->
+    <div id="footer-container"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Cargar FOOTER
+            fetch("../partials/footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error al cargar el footer:", error));
+        });
+    </script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
+
