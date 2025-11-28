@@ -1,9 +1,11 @@
+/* [file name]: dashboard.css - CORREGIDO */
 .dashboard-main {
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
     min-height: calc(100vh - 200px);
     width: 100%;
+    color: var(--text-color);
 }
 
 .dashboard-content {
@@ -18,6 +20,7 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow);
+    border: 2px solid var(--border-color);
 }
 
 .slider-container {
@@ -72,6 +75,8 @@
     cursor: pointer;
     z-index: 2;
     transition: background 0.3s ease;
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
 .slider-btn:hover {
@@ -118,7 +123,7 @@
 }
 
 .panel {
-    background-color: #FFFFFF;
+    background-color: var(--card-bg);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -132,6 +137,7 @@
     position: relative;
     text-decoration: none;
     color: inherit;
+    border: 2px solid transparent;
 }
 
 .panel::before {
@@ -141,7 +147,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #3599eb, var(--sky-blue));
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -149,6 +155,7 @@
 .panel:hover {
     transform: translateY(-10px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-color);
 }
 
 .panel:hover::before {
@@ -164,17 +171,27 @@
 .panel-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: #3599eb;
+    color: var(--primary-color);
+}
+
+.christmas-theme .panel-icon {
+    color: var(--secondary-color);
 }
 
 .panel h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #161616;
+    color: var(--text-color);
+    font-weight: 600;
 }
 
 .panel p {
-    color: #1f4468;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.christmas-theme .panel p {
+    color: var(--accent-color);
 }
 
 /* Responsive */

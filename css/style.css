@@ -1,6 +1,65 @@
-/* Variables de colores basados en azul celeste */
+/* [file name]: styles.css - CORRECCIÓN DE COLORES DE TEXTO */
+/* Variables CSS para el sistema de temas */
 :root {
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  /* Colores base que se mantienen */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --white: #FFFFFF;
+  --black: #161616;
+  
+  /* Variables para tema normal (azul) */
+  --primary-color: #3599eb;
+  --secondary-color: #1f4468;
+  --accent-color: #68b3f0;
+  --light-accent: #e6f2ff;
+  --text-color: #161616;
+  --text-light: #2b2b2b;
+  --text-on-dark: #FFFFFF;
+  --card-bg: #FFFFFF;
+  --hover-color: #2a7bc8;
+  --button-bg: #1f4468;
+  --button-hover: #15314d;
+  --header-bg: linear-gradient(135deg, #68b3f0, #3599eb);
+  --footer-bg: #1f4468;
+  --menu-bg: #FFFFFF;
+  --welcome-bg: linear-gradient(135deg, #3599eb, #68b3f0);
+  --btn-primary-bg: #FFFFFF;
+  --btn-primary-color: #3599eb;
+  --student-card-bg: #3599eb;
+  --student-card-hover: rgb(129, 209, 9);
+  --teacher-card-hover: rgb(217, 253, 217);
+  --memory-card-hover: rgb(217, 253, 217);
+  --memory-image-bg: linear-gradient(135deg, green, rgb(116, 228, 140));
+  --border-color: #3599eb;
+  --construction-color: #3599eb;
+}
+
+/* Tema navideño COMPLETO - CORREGIDO PARA MEJOR CONTRASTE */
+.christmas-theme {
+  --primary-color: #006400; /* Verde oscuro */
+  --secondary-color: #8B0000; /* Rojo oscuro */
+  --accent-color: #FFD700; /* Amarillo dorado - PRINCIPAL PARA TEXTO */
+  --accent-light: #FFF8DC; /* Amarillo muy claro */
+  --light-accent: #f8f8e0; /* Amarillo claro */
+  --text-color: #FFD700; /* Amarillo para texto principal */
+  --text-light: #FFF8DC; /* Amarillo claro para texto secundario */
+  --text-on-dark: #FFD700; /* Amarillo para texto sobre fondos oscuros */
+  --card-bg: #a16a6a; /* Marrón claro */
+  --hover-color: #004d00; /* Verde más oscuro */
+  --button-bg: #8B0000; /* Rojo oscuro */
+  --button-hover: #660000; /* Rojo más oscuro */
+  --header-bg: linear-gradient(135deg, #8B0000, #006400); /* Rojo a verde */
+  --footer-bg: #006400; /* Verde oscuro */
+  --menu-bg: #e1f8e0; /* Amarillo claro */
+  --welcome-bg: linear-gradient(135deg, #006400, #8B0000); /* Verde a rojo */
+  --btn-primary-bg: #FFD700; /* Amarillo */
+  --btn-primary-color: #8B0000; /* Rojo oscuro */
+  --student-card-bg: #8B0000; /* Rojo */
+  --student-card-hover: #FFD700; /* Amarillo */
+  --teacher-card-hover: #f0fff0; /* Verde muy claro */
+  --memory-card-hover: #f0fff0; /* Verde muy claro */
+  --memory-image-bg: linear-gradient(135deg, #8B0000, #006400); /* Rojo a verde */
+  --border-color: #FFD700; /* Amarillo */
+  --construction-color: #8B0000; /* Rojo */
 }
 
 /* Reset y estilos base */
@@ -13,16 +72,17 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #161616;
-    background-color: #3599eb;
+    color: var(--text-color);
+    background-color: var(--primary-color);
     margin: 0;
     width: 100%;
     overflow-x: hidden;
+    transition: all 0.5s ease;
 }
+
 .main-container {
     width: 100%;
     max-width: 1200px;
-    width: 100%;
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -37,9 +97,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 65vh;
-    background: linear-gradient(135deg, #3599eb, #68b3f0);
+    background: var(--welcome-bg);
     text-align: center;
-    color: #FFFFFF;
+    color: var(--text-on-dark);
     margin: 0;
     padding: 0;
 }
@@ -47,18 +107,21 @@ body {
 .welcome-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: var(--accent-color);
 }
 
 .welcome-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     max-width: 900px;
+    color: var(--text-light);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btn-primary {
-    background-color: #FFFFFF;
-    color: #3599eb;
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
     border: none;
     padding: 12px 30px;
     font-size: 1.1rem;
@@ -66,6 +129,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--shadow);
+    font-weight: bold;
 }
 
 .btn-primary:hover {
@@ -80,6 +144,7 @@ body {
     margin: 0 auto;
     min-height: 70vh;
     width: 100%; 
+    color: var(--text-color);
 }
 
 .page-header {
@@ -92,14 +157,16 @@ body {
 }
 
 .page-header h1 {
-    color: #2b2b2b;
+    color: var(--accent-color);
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .page-header p {
-    color: #2b2b2b;
+    color: var(--text-light);
     font-size: 1.2rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilos específicos para alumnos */
@@ -114,19 +181,21 @@ body {
 }
 
 .group-section {
-    background: #FFFFFF;
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
     width: 100%;
+    border: 2px solid var(--border-color);
 }
 
 .group-section h2 {
-    color: #3599eb;
+    color: var(--accent-color);
     margin-bottom: 1.5rem;
     text-align: center;
-    border-bottom: 2px solid #3599eb;
+    border-bottom: 2px solid var(--accent-color);
     padding-bottom: 0.5rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .students-list {
@@ -136,21 +205,26 @@ body {
 }
 
 .student-card {
-    background: #3599eb;
+    background: var(--student-card-bg);
     padding: 1rem;
     border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
-    border-left: 4px solid #3599eb;
+    border-left: 4px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .student-card a {
-    color: #FFFFFF;
+    color: var(--text-on-dark);
     text-decoration: none;
     font-weight: 600;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
+
 .student-card:hover a {
-    color: rgb(129, 209, 9);
+    color: var(--student-card-hover);
 }
+
 /* Estilos específicos para profesores */
 .teachers-container {
     display: grid;
@@ -162,44 +236,52 @@ body {
 }
 
 .teacher-card {
-    background: #FFFFFF;
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
     text-align: center;
-    transition: transform 0.5s ease;
+    transition: all 0.5s ease;
+    border: 2px solid var(--border-color);
 }
 
 .teacher-card:hover {
-    background: rgb(217, 253, 217);
+    background: var(--teacher-card-hover);
     transform: translateY(-5px);
 }
 
 .teacher-avatar {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
 .teacher-card h3 {
-    color: #3599eb;
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .subject {
-    color: #1f4468;
+    color: var(--text-on-dark);
     font-weight: 500;
     margin-bottom: 1rem;
-    padding: 0.5rem;
-    background: #3599eb;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
     border-radius: 20px;
+    display: inline-block;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .quote {
     font-style: italic;
-    color: #161616;
-    border-left: 3px solid #3599eb;
+    color: var(--text-color);
+    border-left: 3px solid var(--accent-color);
     padding-left: 1rem;
     margin-top: 1rem;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 1rem;
+    border-radius: 0 8px 8px 0;
 }
 
 /* Estilos específicos para colegio */
@@ -213,23 +295,26 @@ body {
 }
 
 .info-section {
-    background: #FFFFFF;
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
-    width: 100%; /* Asegurar ancho completo dentro del grid */
+    width: 100%;
+    border: 2px solid var(--border-color);
 }
 
 .info-section h2 {
-    color: #3599eb;
+    color: var(--accent-color);
     margin-bottom: 1rem;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid var(--accent-color);
     padding-bottom: 0.5rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .info-section p {
     line-height: 1.8;
     margin-bottom: 1rem;
+    color: var(--text-color);
 }
 
 .values-list {
@@ -239,17 +324,19 @@ body {
 
 .values-list li {
     padding: 0.5rem 0;
-    border-bottom: 1px solid #3599eb;
+    border-bottom: 1px solid var(--border-color);
     position: relative;
     padding-left: 1.5rem;
+    color: var(--text-color);
 }
 
 .values-list li:before {
     content: "✓";
-    color: #3599eb;
+    color: var(--accent-color);
     font-weight: bold;
     position: absolute;
     left: 0;
+    font-size: 1.2rem;
 }
 
 .values-list li:last-child {
@@ -265,19 +352,53 @@ body {
 .construction-icon {
     font-size: 4rem;
     margin-bottom: 2rem;
-    color: #3599eb;
+    color: var(--accent-color);
 }
 
 .construction-page h2 {
-    color: #3599eb;
+    color: var(--accent-color);
     margin-bottom: 1rem;
     font-size: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .construction-page p {
-    color: #1f4468;
+    color: var(--text-light);
     margin-bottom: 2rem;
     font-size: 1.1rem;
+}
+
+/* Estilos específicos para el tema navideño en el contenido principal */
+.christmas-theme main,
+.christmas-theme .content-page,
+.christmas-theme .dashboard-main {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+}
+
+.christmas-theme .group-section,
+.christmas-theme .teacher-card,
+.christmas-theme .info-section,
+.christmas-theme .memory-card {
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+.christmas-theme .group-section h2,
+.christmas-theme .info-section h2,
+.christmas-theme .memory-content h3 {
+    color: var(--secondary-color);
+}
+
+.christmas-theme .memory-text,
+.christmas-theme .info-section p,
+.christmas-theme .teacher-card h3 {
+    color: var(--text-color);
+}
+
+.christmas-theme .memory-date {
+    color: var(--secondary-color);
+    font-weight: 600;
 }
 
 /* Responsive para páginas de contenido */
@@ -303,6 +424,7 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
 /* Breakpoints para responsive design */
 @media (max-width: 480px) {
     .welcome-content h1 {
@@ -348,7 +470,7 @@ body {
 
 /* Estilos base para escalado proporcional */
 html {
-    font-size: 16px; /* Tamaño base */
+    font-size: 16px;
 }
 
 @media (max-width: 768px) {
@@ -362,3 +484,4 @@ html {
         font-size: 12px;
     }
 }
+

@@ -1,9 +1,9 @@
 .menu-container {
-    background-color: #FFFFFF;
+    background-color: var(--menu-bg);
     box-shadow: var(--shadow);
     padding: 0 2rem;
     margin-bottom: 2rem;
-    overflow: hidden; /* Para contener la animación de entrada */
+    overflow: hidden;
 }
 
 .menu {
@@ -24,14 +24,15 @@
     position: relative;
     transform: scale(1);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    opacity: 0; /* Inicialmente ocultos para la animación */
+    opacity: 0;
     transform: translateY(-20px) scale(0.9);
+    color: var(--text-color);
 }
 
 /* Efecto de acercamiento al pasar el mouse */
 .menu-item:hover {
-    background-color: rgba(0, 128, 0, 0.3);
-    color: green;
+    background-color: rgba(var(--primary-color-rgb), 0.3);
+    color: var(--primary-color);
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1;
@@ -39,8 +40,8 @@
 
 /* Estado activo con animación */
 .menu-item.active {
-    border-bottom: 5px solid green;
-    color: green;
+    border-bottom: 5px solid var(--accent-color);
+    color: var(--primary-color);
     font-weight: 700;
     animation: activePulse 0.5s ease-out;
     opacity: 1;
@@ -73,7 +74,7 @@
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid red;
+    border-top: 5px solid var(--accent-color);
     transform: translateX(-50%);
 }
 

@@ -28,7 +28,79 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => console.error('Error loading menu:', error));
     }
+    // Pequeño delay para asegurar que el header se haya cargado
+    setTimeout(() => {
+        // Verificar preferencia guardada
+        const savedTheme = localStorage.getItem('christmasTheme');
+        if (savedTheme === 'true') {
+            document.body.classList.add('christmas-theme');
+            createSnowflakes();
+            createChristmasBanners();
+            applyChristmasStyles();
+        }
+        
+        // Crear botón de cambio de tema
+        createThemeToggleButton();
+    }, 100);
 });
+
+document.addEventListener('headerLoaded', function() {
+    createThemeToggleButton();
+});
+
+function createThemeToggleButton() {
+    let themeButton = document.querySelector('.theme-toggle');
+    
+    // Si el botón no existe, crearlo
+    if (!themeButton) {
+        themeButton = document.createElement('button');
+        themeButton.classList.add('theme-toggle');
+        themeButton.textContent = document.body.classList.contains('christmas-theme') ? 
+            'Tema Normal' : 'Tema Navideño';
+        
+        // Estilos del botón
+        themeButton.style.cssText = `
+            background-color: ${document.body.classList.contains('christmas-theme') ? 
+                christmasColors.red : '#3599eb'};
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        `;
+        
+        themeButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        themeButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+        
+        themeButton.addEventListener('click', toggleChristmasTheme);
+        
+        // Insertar botón en el header - VERSIÓN MEJORADA
+        const headerActions = document.querySelector('.user-actions');
+        if (headerActions) {
+            // Insertar antes del botón de logout
+            const logoutButton = headerActions.querySelector('.btn-logout');
+            if (logoutButton) {
+                headerActions.insertBefore(themeButton, logoutButton);
+            } else {
+                headerActions.appendChild(themeButton);
+            }
+        }
+    }
+    
+    // Actualizar el texto del botón
+    themeButton.textContent = document.body.classList.contains('christmas-theme') ? 
+        'Tema Normal' : 'Tema Navideño';
+    themeButton.style.backgroundColor = document.body.classList.contains('christmas-theme') ? 
+        christmasColors.red : '#3599eb';
+}
 
 function initializeMenu() {
     const menuItems = document.querySelectorAll('.menu-item');
